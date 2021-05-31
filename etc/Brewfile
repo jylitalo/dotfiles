@@ -1,0 +1,24 @@
+# brew packages
+brew "ansible"
+brew "awscli"
+brew "chruby"
+brew "gnupg"
+brew "python3"
+brew "ruby-install"
+brew "shellcheck"
+brew "vim"
+# tap brew packages
+tap "Yleisradio/terraforms"
+brew "chtf"
+tap "golangci/tap"
+brew "golangci-lint"
+# casks
+cask "bitwarden"
+cask "docker"
+cask "google-chrome"
+cask "iterm2"
+cask "visual-studio-code"
+# tap casks
+tap "homebrew/cask-drivers"
+cask "yubico-authenticator"
+

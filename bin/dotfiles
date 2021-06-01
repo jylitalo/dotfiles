@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd $(dirname $0)/..
+brew bundle --file etc/Brewfile
+
+(cd ansible && ansible-playbook -c local -i localhost, dotfiles.yml)

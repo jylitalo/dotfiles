@@ -1,5 +1,6 @@
 # brew packages
 brew "ansible"
+brew "ansible-lint"
 brew "awscli"
 brew "chruby"
 brew "gnupg"
@@ -17,8 +18,8 @@ cask "bitwarden"
 cask "docker"
 cask "google-chrome"
 cask "iterm2"
+cask "tunnelblick"
 cask "visual-studio-code"
 # tap casks
 tap "homebrew/cask-drivers"
 cask "yubico-authenticator"
-

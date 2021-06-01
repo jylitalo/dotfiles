@@ -1,0 +1,8 @@
+---
+- name: setup dotfiles under user's HOME
+  hosts: localhost
+  vars:
+    ruby_version: 3.0.1
+  tasks:
+    - include: tasks/ruby.yml
+    - include: tasks/zsh.yml

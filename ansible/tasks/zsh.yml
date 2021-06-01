@@ -1,0 +1,12 @@
+---
+- name: zshrc
+  blockinfile:
+    path: "{{ lookup('env', 'HOME') }}/.zshrc"
+    create: yes
+    mode: 0644
+    block: |
+      source /usr/local/opt/chruby/share/chruby/chruby.sh
+      source /usr/local/opt/chruby/share/chruby/auto.sh
+      chruby {{ ruby_version }}
+      source /usr/local/opt/chtf/share/chtf/chtf.sh
+      chtf 0.15.4

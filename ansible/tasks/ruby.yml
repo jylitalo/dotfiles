@@ -1,0 +1,5 @@
+---
+- name: "Install ruby {{ ruby_version }}, if it doesnt exist already"
+  command:
+    cmd: "ruby-install {{ ruby_version }}"
+    creates: "{{ lookup('env', 'HOME') }}/.rubies/ruby-{{ ruby_version }}"

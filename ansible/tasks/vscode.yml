@@ -1,0 +1,11 @@
+---
+- name: VScode extensions
+  command:
+    cmd: code --install-extension "{{ item }}"
+    creates: "~/.vscode/extensions/{{ item }}*"
+  with_items:
+  - eamodio.gitlens
+  - golang.go
+  - hashicorp.terraform
+  - ms-python.python
+  - ms-python.vscode-pylance

@@ -6,3 +6,4 @@
   tasks:
     - include: tasks/ruby.yml
     - include: tasks/zsh.yml
+    - include: tasks/vscode.yml

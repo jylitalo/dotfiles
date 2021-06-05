@@ -1,0 +1,41 @@
+---
+- name: set ... in vimrc
+  lineinfile:
+    path: ~/.vimrc
+    create: yes
+    regexp: "set {{ item.split('=')[0] }}"
+    line: "set {{ item }}"
+    owner: jylitalo
+    mode: 0644
+  with_items:
+  - "clipboard=unnamed" # enable cmd+V
+  - "hlsearch" # highlight search pattern
+  - "incsearch" # incremental search
+  - "mouse=a" # support mouse
+  - "number" # line numbers
+
+- name: syntax highlighting
+  lineinfile:
+    path: ~/.vimrc
+    regexp: "^syntax"
+    line: "syntax on"
+    owner: jylitalo
+    mode: 0644
+
+- name: statusline in vim
+  blockinfile:
+    path: "{{ lookup('env', 'HOME') }}/.vimrc"
+    marker: "\" {mark} statusline ANSIBLE MANAGED BLOCK"
+    mode: 0644
+    block: |
+      set laststatus=2
+      set statusline+=%F\ %l\:%c
+
+- name: tab is two spaces in vim
+  blockinfile:
+    path: "{{ lookup('env', 'HOME') }}/.vimrc"
+    marker: "\" {mark} tabs ANSIBLE MANAGED BLOCK"
+    mode: 0644
+    block: |
+      set expandtab
+      set shiftwidth=2

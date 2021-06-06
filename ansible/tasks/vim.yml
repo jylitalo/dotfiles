@@ -24,7 +24,7 @@
 
 - name: statusline in vim
   blockinfile:
-    path: "{{ lookup('env', 'HOME') }}/.vimrc"
+    path: "~/.vimrc"
     marker: "\" {mark} statusline ANSIBLE MANAGED BLOCK"
     mode: 0644
     block: |
@@ -33,7 +33,7 @@
 
 - name: tab is two spaces in vim
   blockinfile:
-    path: "{{ lookup('env', 'HOME') }}/.vimrc"
+    path: "~/.vimrc"
     marker: "\" {mark} tabs ANSIBLE MANAGED BLOCK"
     mode: 0644
     block: |

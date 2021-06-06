@@ -4,7 +4,7 @@
     name: ~/jylitalo
     state: directory
     mode: 0700
-    owner: jylitalo
+    owner: "{{ username }}"
 
 - name: clone / update GitHub repos
   git:
@@ -18,7 +18,7 @@
     path: ~/.gitconfig
     regexp: "^\\[user\\]"
     line: "[user]"
-    owner: jylitalo
+    owner: "{{ username }}"
     mode: 0644
 
 - name: name in global .gitconfig
@@ -26,7 +26,7 @@
     path: ~/.gitconfig
     regexp: "name ="
     line: "name = Juha Ylitalo"
-    owner: jylitalo
+    owner: "{{ username }}"
     mode: 0644
 
 - name: email in global .gitconfig
@@ -34,5 +34,5 @@
     path: ~/.gitconfig
     regexp: "email ="
     line: "email = jylitalo@iki.fi"
-    owner: jylitalo
+    owner: "{{ username }}"
     mode: 0644

@@ -11,7 +11,7 @@
     path: ~/.zshrc
     regexp: "export PATH="
     line: "export PATH=$HOME/bin:$PATH"
-    owner: jylitalo
+    owner: "{{ username }}"
     mode: 0644
 
 - name: chtf and chruby in ~/.zshrc

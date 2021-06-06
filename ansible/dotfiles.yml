@@ -4,6 +4,7 @@
   vars:
     ruby_version: 3.0.1
   tasks:
+    - include: tasks/git.yml
     - include: tasks/ruby.yml
     - include: tasks/vim.yml
     - include: tasks/vscode.yml

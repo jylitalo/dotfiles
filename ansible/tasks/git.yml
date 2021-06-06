@@ -1,0 +1,38 @@
+---
+- name: create ~/jylitalo
+  file:
+    name: ~/jylitalo
+    state: directory
+    mode: 0700
+    owner: jylitalo
+
+- name: clone / update GitHub repos
+  git:
+    repo: "git@github.com:{{ item }}.git"
+    dest: "~/{{ item }}"
+  with_items:
+  - jylitalo/ukulele-tabs
+
+- name: name in global .gitconfig
+  lineinfile:
+    path: ~/.gitconfig
+    regexp: "^\\[user\\]"
+    line: "[user]"
+    owner: jylitalo
+    mode: 0644
+
+- name: name in global .gitconfig
+  lineinfile:
+    path: ~/.gitconfig
+    regexp: "name ="
+    line: "name = Juha Ylitalo"
+    owner: jylitalo
+    mode: 0644
+
+- name: email in global .gitconfig
+  lineinfile:
+    path: ~/.gitconfig
+    regexp: "email ="
+    line: "email = jylitalo@iki.fi"
+    owner: jylitalo
+    mode: 0644

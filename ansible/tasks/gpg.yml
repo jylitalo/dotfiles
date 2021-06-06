@@ -1,0 +1,25 @@
+---
+- name: create ~/.gnupg
+  file:
+    name: ~/.gnupg
+    state: directory
+    mode: 0700
+    owner: "{{ username }}"
+
+- name: gpg.conf
+  lineinfile:
+    path: ~/.gnupg/gpg.conf
+    create: yes
+    regexp: "agent$"
+    line: "use-agent"
+    owner: "{{ username }}"
+    mode: 0644
+
+- name: scdaemon.conf
+  lineinfile:
+    path: ~/.gnupg/scdaemon.conf
+    create: yes
+    regexp: "ccid$"
+    line: "disable-ccid"
+    owner: "{{ username }}"
+    mode: 0644

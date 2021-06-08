@@ -8,6 +8,7 @@
     - include: tasks/git.yml
     - include: tasks/gpg.yml
     - include: tasks/ruby.yml
+    - include: tasks/terraform.yml
     - include: tasks/vim.yml
     - include: tasks/vscode.yml
     - include: tasks/zsh.yml

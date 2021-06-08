@@ -1,5 +1,5 @@
 ---
-- name: create ~/jylitalo
+- name: ~/jylitalo
   file:
     name: ~/jylitalo
     state: directory

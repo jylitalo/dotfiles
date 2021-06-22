@@ -5,6 +5,7 @@
     username: jylitalo
     ruby_version: 3.0.1
   tasks:
+    - include: tasks/bash.yml
     - include: tasks/git.yml
     - include: tasks/gpg.yml
     - include: tasks/ruby.yml

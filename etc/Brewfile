@@ -2,6 +2,7 @@
 brew "ansible"
 brew "ansible-lint"
 brew "awscli"
+brew "bash-completion"
 brew "chruby"
 brew "gnupg"
 brew "go"

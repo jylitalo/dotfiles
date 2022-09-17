@@ -14,18 +14,15 @@
     owner: "{{ username }}"
     mode: 0644
 
-- name: chtf and chruby in ~/.zshrc
+- name: chtf in ~/.zshrc
   blockinfile:
     path: "{{ lookup('env', 'HOME') }}/.zshrc"
-    marker: "# {mark} chtf & chruby ANSIBLE MANAGED BLOCK"
+    marker: "# {mark} chtf ANSIBLE MANAGED BLOCK"
     create: yes
     mode: 0644
     block: |
-      source /usr/local/opt/chruby/share/chruby/chruby.sh
-      source /usr/local/opt/chruby/share/chruby/auto.sh
-      chruby {{ ruby_version }}
       source /usr/local/opt/chtf/share/chtf/chtf.sh
-      chtf 0.15.4
+      chtf 1.2.8
 
 - name: shell prompt in ~/.zshrc
   blockinfile:

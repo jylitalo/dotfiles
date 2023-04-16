@@ -20,5 +20,10 @@ vcs_info_wrapper() {
 RPROMPT=$'$(vcs_info_wrapper)'
 PROMPT="[%m:%~]%# "
 
+# Local add-ons
+if [ -f "$HOME/.zprofile_local" ]; then
+  source "$HOME/.zprofile_local"
+fi
+
 # Add $HOME/bin to PATH
 PATH=$PATH:$HOME/bin

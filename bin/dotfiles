@@ -1,8 +1,0 @@
-#!/bin/bash
-
-set -eu -o pipefail
-
-cd "$(dirname "$0")/.." || exit 1
-brew bundle --file etc/Brewfile
-
-(cd ansible && ansible-playbook -c local -i localhost, dotfiles.yml)

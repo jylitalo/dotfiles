@@ -20,6 +20,12 @@ vcs_info_wrapper() {
 RPROMPT=$'$(vcs_info_wrapper)'
 PROMPT="[%m:%~]%# "
 
+# setup chtf
+if [[ -f /opt/homebrew/share/chtf/chtf.sh ]]; then
+  source /opt/homebrew/share/chtf/chtf.sh
+  chtf 1.4.5
+fi
+
 # Local add-ons
 if [ -f "$HOME/.zprofile_local" ]; then
   source "$HOME/.zprofile_local"

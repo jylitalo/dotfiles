@@ -18,7 +18,7 @@ vcs_info_wrapper() {
   fi
 }
 RPROMPT=$'$(vcs_info_wrapper)'
-PROMPT="[%m:%~]%# "
+PROMPT="%n@%m %9~ %# "
 
 # setup chtf
 if [[ -f /opt/homebrew/share/chtf/chtf.sh ]]; then
@@ -27,8 +27,8 @@ if [[ -f /opt/homebrew/share/chtf/chtf.sh ]]; then
 fi
 
 # Local add-ons
-if [ -f "$HOME/.zprofile_local" ]; then
-  source "$HOME/.zprofile_local"
+if [ -f "$HOME/.zshrc_local" ]; then
+  source "$HOME/.zshrc_local"
 fi
 
 # Add $HOME/bin to PATH

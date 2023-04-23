@@ -26,6 +26,13 @@ if [[ -f /opt/homebrew/share/chtf/chtf.sh ]]; then
   chtf 1.4.5
 fi
 
+# colima setup
+if command -v colima &> /dev/null; then
+  if ! colima status &> /dev/null; then
+    colima start --ssh-agent --vm-type=vz --mount-type=virtiofs
+  fi
+fi
+
 # Local add-ons
 if [ -f "$HOME/.zshrc_local" ]; then
   source "$HOME/.zshrc_local"

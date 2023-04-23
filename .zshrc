@@ -40,3 +40,11 @@ fi
 
 # Add $HOME/bin to PATH
 PATH=$PATH:$HOME/bin
+
+# zsh completion
+if [ -d "$HOME/etc/zsh_functions" ]; then
+  fpath+=($HOME/etc/zsh_functions)
+  export fpath
+fi
+autoload -U compinit
+compinit

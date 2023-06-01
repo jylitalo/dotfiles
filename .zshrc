@@ -27,10 +27,16 @@ if [[ -f /opt/homebrew/share/chtf/chtf.sh ]]; then
 fi
 
 # colima setup
-if command -v colima &> /dev/null; then
-  if ! colima status &> /dev/null; then
-    colima start --ssh-agent --vm-type=vz --mount-type=virtiofs
-  fi
+# if command -v colima &> /dev/null; then
+#   if ! colima status &> /dev/null; then
+#     colima start --ssh-agent --vm-type=vz --mount-type=virtiofs
+#   fi
+# fi
+
+# setup docker-buildx
+if [ ! -d ~/.docker/cli-plugins ]; then
+  mkdir -p ~/.docker/cli-plugins
+  ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 fi
 
 # Local add-ons
@@ -48,3 +54,6 @@ if [ -d "$HOME/etc/zsh_functions" ]; then
 fi
 autoload -U compinit
 compinit
+if [ -f /opt/homebrew/share/zsh/site-functions/aws_zsh_completer.sh ]; then
+  source /opt/homebrew/share/zsh/site-functions/aws_zsh_completer.sh
+fi

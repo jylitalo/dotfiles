@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p ~/bin ~/etc/zsh_functions ~/jylitalo ~/Yleisradio
+mkdir -p ~/bin ~/etc/zsh_functions
 if [ -f $HOME/etc/Brewfile ]; then
   brew bundle install --file=$HOME/etc/Brewfile
 fi

@@ -29,7 +29,7 @@ PROMPT="%n@%m %9~ %# "
 # setup chtf
 if [[ -f "${BREW_PATH}/share/chtf/chtf.sh" ]]; then
   source "${BREW_PATH}/share/chtf/chtf.sh"
-  chtf 1.4.5
+  chtf 1.9.6
 fi
 
 # colima setup
@@ -64,4 +64,18 @@ if [ -f "${BREW_PATH}/share/zsh/site-functions/aws_zsh_completer.sh" ]; then
   source "${BREW_PATH}/share/zsh/site-functions/aws_zsh_completer.sh"
 fi
 unset BREW_PATH
+eval "$(atuin init zsh)"
 figlet -f slant $HOST
+
+# update option+left/right for backward-word/forward-word
+bindkey '\e\e[C' forward-word                                                                                                                                                                     [dark-theme]
+bindkey '\e\e[D' backward-word
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+. "$HOME/.cargo/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+nvm use 20.13.1

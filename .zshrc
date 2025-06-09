@@ -68,7 +68,7 @@ eval "$(atuin init zsh)"
 figlet -f slant $HOST
 
 # update option+left/right for backward-word/forward-word
-bindkey '\e\e[C' forward-word                                                                                                                                                                     [dark-theme]
+bindkey '\e\e[C' forward-word
 bindkey '\e\e[D' backward-word
 
 # added by Snowflake SnowSQL installer v1.2

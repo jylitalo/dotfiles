@@ -29,7 +29,7 @@ PROMPT="%n@%m %9~ %# "
 # setup chtf
 if [[ -f "${BREW_PATH}/share/chtf/chtf.sh" ]]; then
   source "${BREW_PATH}/share/chtf/chtf.sh"
-  chtf 1.9.6
+  chtf 1.10.5
 fi
 
 # colima setup
@@ -64,7 +64,10 @@ if [ -f "${BREW_PATH}/share/zsh/site-functions/aws_zsh_completer.sh" ]; then
   source "${BREW_PATH}/share/zsh/site-functions/aws_zsh_completer.sh"
 fi
 unset BREW_PATH
-eval "$(atuin init zsh)"
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)" # we want atuin keymaps to override fzf
+
 figlet -f slant $HOST
 
 # update option+left/right for backward-word/forward-word
@@ -79,3 +82,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
 [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 nvm use 20.13.1
+
+export PATH="$HOME/.local/bin:$PATH"

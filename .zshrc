@@ -1,11 +1,9 @@
 # Setup Homebrew
-GOARCH=$(uname -m)
-BREW_PATH=/usr/local
-if [ "$GOARCH" = "arm64" ]; then
-  BREW_PATH=/opt/homebrew
+if [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -f /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
 fi
-
-eval "$(${BREW_PATH}/bin/brew shellenv)"
 # Setup dotfiles
 alias config='/usr/bin/git --git-dir=/Users/jylitalo/.dotfiles/ --work-tree=/Users/jylitalo'
 
@@ -27,8 +25,8 @@ RPROMPT=$'$(vcs_info_wrapper)'
 PROMPT="%n@%m %9~ %# "
 
 # setup chtf
-if [[ -f "${BREW_PATH}/share/chtf/chtf.sh" ]]; then
-  source "${BREW_PATH}/share/chtf/chtf.sh"
+if [[ -f "${HOMEBREW_PREFIX}/share/chtf/chtf.sh" ]]; then
+  source "${HOMEBREW_PREFIX}/share/chtf/chtf.sh"
   chtf 1.10.5
 fi
 
@@ -42,7 +40,7 @@ fi
 # setup docker-buildx
 if [ ! -d ~/.docker/cli-plugins ]; then
   mkdir -p ~/.docker/cli-plugins
-  ln -sfn "${BREW_PATH}/opt/docker-buildx/bin/docker-buildx" ~/.docker/cli-plugins/docker-buildx
+  ln -sfn "${HOMEBREW_PREFIX}/opt/docker-buildx/bin/docker-buildx" ~/.docker/cli-plugins/docker-buildx
 fi
 
 # Local add-ons
@@ -60,10 +58,9 @@ if [ -d "$HOME/etc/zsh_functions" ]; then
 fi
 autoload -U compinit
 compinit
-if [ -f "${BREW_PATH}/share/zsh/site-functions/aws_zsh_completer.sh" ]; then
-  source "${BREW_PATH}/share/zsh/site-functions/aws_zsh_completer.sh"
+if [ -f "${HOMEBREW_PREFIX}/share/zsh/site-functions/aws_zsh_completer.sh" ]; then
+  source "${HOMEBREW_PREFIX}/share/zsh/site-functions/aws_zsh_completer.sh"
 fi
-unset BREW_PATH
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)" # we want atuin keymaps to override fzf
@@ -84,3 +81,4 @@ export NVM_DIR="$HOME/.nvm"
 nvm use 20.13.1
 
 export PATH="$HOME/.local/bin:$PATH"
+alias vim=nvim

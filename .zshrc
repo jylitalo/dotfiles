@@ -58,8 +58,17 @@ if [ -d "$HOME/etc/zsh_functions" ]; then
 fi
 autoload -U compinit
 compinit
-if [ -f "${HOMEBREW_PREFIX}/share/zsh/site-functions/aws_zsh_completer.sh" ]; then
-  source "${HOMEBREW_PREFIX}/share/zsh/site-functions/aws_zsh_completer.sh"
+if [ -n "$HOMEBREW_PREFIX" ]; then
+  if [ -f "${HOMEBREW_PREFIX}/share/zsh/site-functions/aws_zsh_completer.sh" ]; then
+    source "${HOMEBREW_PREFIX}/share/zsh/site-functions/aws_zsh_completer.sh"
+  fi
+  # added by Snowflake SnowSQL installer v1.2
+  export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+  . "$HOME/.cargo/env"
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+  [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+  nvm use 20.13.1
 fi
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
@@ -70,15 +79,6 @@ figlet -f slant $HOST
 # update option+left/right for backward-word/forward-word
 bindkey '\e\e[C' forward-word
 bindkey '\e\e[D' backward-word
-
-# added by Snowflake SnowSQL installer v1.2
-export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
-. "$HOME/.cargo/env"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-nvm use 20.13.1
 
 export PATH="$HOME/.local/bin:$PATH"
 alias vim=nvim

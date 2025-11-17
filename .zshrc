@@ -1,7 +1,7 @@
 # Setup Homebrew
-if [ -f /opt/homebrew/bin/brew ]; then
+if [ -z "$HOMEBREW_PREFIX" -a -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [ -f /usr/local/bin/brew ]; then
+elif [ -z "$HOMEBREW_PREFIX" -a -f /usr/local/bin/brew ]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 # Setup dotfiles
@@ -66,9 +66,8 @@ if [ -n "$HOMEBREW_PREFIX" ]; then
   export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
   . "$HOME/.cargo/env"
   export NVM_DIR="$HOME/.nvm"
-  [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-  [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-  nvm use 20.13.1
+  [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+  [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && . "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 fi
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
@@ -82,3 +81,6 @@ bindkey '\e\e[D' backward-word
 
 export PATH="$HOME/.local/bin:$PATH"
 alias vim=nvim
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH

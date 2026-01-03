@@ -5,7 +5,7 @@ elif [ -z "$HOMEBREW_PREFIX" -a -f /usr/local/bin/brew ]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 # Setup dotfiles
-alias config='/usr/bin/git --git-dir=/Users/jylitalo/.dotfiles/ --work-tree=/Users/jylitalo'
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 ##
 # Setup prompt
@@ -68,6 +68,10 @@ if [ -n "$HOMEBREW_PREFIX" ]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
   [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && . "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+  [ -f "$HOMEBREW_PREFIX/bin/atuin" ] || brew install atuin
+  [ -f "$HOMEBREW_PREFIX/bin/figlet" ] || brew install figlet
+  [ -f "$HOMEBREW_PREFIX/bin/fzf" ] || brew install fzf
+  [ -f "$HOMEBREW_PREFIX/bin/zoxide" ] || brew install zoxide
 fi
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"

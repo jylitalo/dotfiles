@@ -63,14 +63,11 @@ if [ -n "$HOMEBREW_PREFIX" ]; then
   [ -f "$HOMEBREW_PREFIX/bin/fzf" ] || brew install fzf
   [ -f "$HOMEBREW_PREFIX/bin/zoxide" ] || brew install zoxide
   [ ! -f "$HOME/.cargo/env" ] || . "$HOME/.cargo/env"
-  export NVM_DIR="$HOME/.nvm"
   [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
   [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && . "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-  [ -f "$HOMEBREW_PREFIX/bin/atuin" ] || brew install atuin
-  [ -f "$HOMEBREW_PREFIX/bin/figlet" ] || brew install figlet
-  [ -f "$HOMEBREW_PREFIX/bin/fzf" ] || brew install fzf
-  [ -f "$HOMEBREW_PREFIX/bin/zoxide" ] || brew install zoxide
+  export NVM_DIR="$HOME/.nvm"
 fi
+
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)" # we want atuin keymaps to override fzf
@@ -85,5 +82,3 @@ export PATH="$HOME/.local/bin:$PATH"
 alias k=kubecolor
 alias v=nvim
 
-# added by Snowflake SnowSQL installer v1.2
-export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH

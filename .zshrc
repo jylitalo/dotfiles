@@ -24,12 +24,6 @@ vcs_info_wrapper() {
 RPROMPT=$'$(vcs_info_wrapper)'
 PROMPT="%n@%m %9~ %# "
 
-# setup chtf
-if [[ -f "${HOMEBREW_PREFIX}/share/chtf/chtf.sh" ]]; then
-  source "${HOMEBREW_PREFIX}/share/chtf/chtf.sh"
-  chtf 1.10.5
-fi
-
 # colima setup
 # if command -v colima &> /dev/null; then
 #   if ! colima status &> /dev/null; then

@@ -88,6 +88,7 @@ bindkey '\e\e[C' forward-word
 bindkey '\e\e[D' backward-word
 
 export PATH="$HOME/.local/bin:$PATH"
+alias k=kubecolor
 alias v=nvim
 
 # added by Snowflake SnowSQL installer v1.2

@@ -81,4 +81,3 @@ bindkey '\e\e[D' backward-word
 export PATH="$HOME/.local/bin:$PATH"
 alias k=kubecolor
 alias v=nvim
-

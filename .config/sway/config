@@ -4,6 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+exec_always ~/.local/bin/autotiling
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -237,5 +238,5 @@ bar {
 output DP-4 scale 1.5
 output eDP-1 scale 2.0
 
-
+bindsym $mod+Alt+c exec pkill -x conky || conky -c ~/.config/conky/sway.conkyrc
 include /etc/sway/config.d/*

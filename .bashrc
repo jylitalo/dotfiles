@@ -23,3 +23,4 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"

@@ -142,6 +142,16 @@ input type:keyboard {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+    workspace 1 output DP-4
+    workspace 2 output DP-4
+    workspace 3 output DP-4
+    workspace 4 output DP-4
+    workspace 5 output DP-4
+    workspace 6 output DP-4
+    workspace 7 output DP-4
+    workspace 8 output DP-4
+    workspace 9 output DP-4
+    workspace 10 output DP-4
 #
 # Layout stuff:
 #
@@ -221,22 +231,23 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
+# bar {
+#    position top
+#
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+#    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+#
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+#}
 # Scale monitor
 output DP-4 scale 1.5
-output eDP-1 scale 2.0
-
+# output eDP-1 2.0
+output eDP-1 disable
+exec waybar
 bindsym $mod+Alt+c exec pkill -x conky || conky -c ~/.config/conky/sway.conkyrc
 include /etc/sway/config.d/*

@@ -1,3 +1,4 @@
+#!/bin/bash
 # .bashrc
 
 # Source global definitions
@@ -6,10 +7,14 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+export LANG=C.UTF-8
+if [[ "$PATH" != "$HOME/.local/bin:$HOME/bin:"* ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
-export PATH
+if [[ "$TERM" == "xterm-ghostty" ]]; then
+    TERM="xterm"
+fi
+export PATH TERM
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -18,10 +23,14 @@ export PATH
 if [ -d ~/.bashrc.d ]; then
     for rc in ~/.bashrc.d/*; do
         if [ -f "$rc" ]; then
+            # shellcheck disable=SC1090
             . "$rc"
         fi
     done
 fi
 unset rc
+# shellcheck disable=SC2139
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias k=kubecolor
+alias v=nvim
 # eval "$(atuin init bash)"

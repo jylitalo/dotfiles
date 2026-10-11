@@ -2,6 +2,8 @@
 # shellcheck disable=SC1091,SC3024,SC3030
 
 LANG=C
+EDITOR=nvim
+export LANG EDITOR
 # Setup Homebrew
 if [ -z "$HOMEBREW_PREFIX" ] && [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -80,6 +82,9 @@ if [ -n "$HOMEBREW_PREFIX" ]; then
   [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
   [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && . "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
   export NVM_DIR="$HOME/.nvm"
+fi
+if [ -f "/usr/bin/flatpak" ]; then
+  alias logseq="flatpak run com.logseq.Logseq --disable-gpu &"
 fi
 
 eval "$(fzf --zsh)"
